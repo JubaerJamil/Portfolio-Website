@@ -238,73 +238,50 @@ h6 {
 /*--------------------------------------------------------------
 # Hero Section
 --------------------------------------------------------------*/
-
 #hero {
-    position: relative;
     width: 100%;
-    height: 40vh;
-    overflow: hidden;
+    height: 100vh;
+    background: url("../img/readbook.jpg") top center;
+    background-size: cover;
   }
 
-  .video-container {
+  #hero:before {
+    content: "";
+    background: rgba(5, 13, 24, 0.3);
     position: absolute;
+    bottom: 0;
     top: 0;
-    left: 300px;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
+    left: 0;
+    right: 0;
+    z-index: 1;
   }
-
-  video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-
-  .hero-container {
-    text-align: center;
-    z-index: 1; /* Ensures the content is above the video */
-  }
-
-  .hero-container h1 {
-    font-size: 3em;
-    margin-bottom: 20px;
-  }
-
-  .hero-container p {
-    font-size: 1.5em;
-  }
-
 
   #hero .hero-container {
     position: relative;
-    z-index: 1;
+    z-index: 2;
     min-width: 300px;
   }
 
   #hero h1 {
-    margin: 0 40px 10px 0;
-    font-size: 74px;
-    font-weight: 900;
+    margin: 0 0 10px 0;
+    font-size: 64px;
+    font-weight: 700;
     line-height: 56px;
-    color: #E5A237;
+    color: #fff;
   }
 
   #hero p {
-    color: #e2f3c6;
-    margin-bottom: 10px;
-    /* margin-left: -210px; */
-    font-size: 30px;
-    font-weight: 900;
+    color: #fff;
+    margin-bottom: 50px;
+    font-size: 26px;
     font-family: "Poppins", sans-serif;
   }
 
   #hero p span {
-    color: #BDC3C7 ;
-    margin-left: 0px;
+    color: #fff;
     padding-bottom: 4px;
-    letter-spacing: 2px;
-    border-bottom: 3px solid #566573;
+    letter-spacing: 1px;
+    border-bottom: 3px solid #149ddd;
   }
 
   @media (min-width: 1024px) {
@@ -325,17 +302,6 @@ h6 {
       margin-bottom: 30px;
     }
   }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /*--------------------------------------------------------------

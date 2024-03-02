@@ -25,6 +25,14 @@
 <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 <!-- Axios file -->
 <script src="{{asset('js/axios.min.js')}}"></script>
+<!-- toastify js -->
+<script src="{{asset('js/toastify-js.js')}}"></script>
+<!-- config js -->
+<script src="{{asset('js/config.js')}}"></script>
+<!-- toastify css -->
+<link rel="stylesheet" href="{{ asset('css/toastify.min.css') }}">
+<!-- Loader css -->
+<link rel="stylesheet" href="{{ asset('css/progress.css') }}">
 <!--for table data-->
 <link href="{{ asset('css/jquery-datatable.min.css') }}" rel="stylesheet" />
 <script src="{{ asset('js/jquery.min.js') }}"></script>
@@ -65,13 +73,13 @@
         <div class="collapse" id="ProfileNav" style="">
           <ul class="nav ">
             <li class="nav-item">
-              <a class="nav-link text-white link-primary" href="{{ url('/user/user-profile') }}">
+              <a class="nav-link text-white link-primary" href="">
                 <span class="sidenav-mini-icon"> MP </span>
                 <span class="sidenav-normal  ms-3  ps-1"> My Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white link-primary" href="{{ url('/logout') }}">
+              <a class="nav-link text-white link-primary" href="/logout">
                 <span class="sidenav-mini-icon"> L </span>
                 <span class="sidenav-normal  ms-3  ps-1"> Logout </span>
               </a>
@@ -239,13 +247,6 @@
     </div> --}}
   </div>
   <ul class="navbar-nav  justify-content-end">
-    {{-- <li class="nav-item">
-      <a href="./pages/authentication/signin/illustration.html" class="nav-link text-body p-0 position-relative" target="_blank">
-        <i class="material-icons me-sm-1">
-          account_circle
-        </i>
-      </a>
-    </li> --}}
     <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
       <a href="javascript:;" class="nav-link text-body p-0" id="iconNavbarSidenav">
         <div class="sidenav-toggler-inner">
@@ -295,8 +296,23 @@
 </nav>
 {{-- End Navbar --}}
 
-@include('components.loader')
-<div id="content-div">
+{{-- <div id="loader" class="d-flex justify-content-center align-items-center d-none" style="margin-top: 300px";>
+    <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading...
+    </button>
+</div> --}}
+
+<div id="loader" class="LoadingOverlay d-none">
+    <div class="Line-Progress">
+        <div class="indeterminate"></div>
+    </div>
+</div>
+
+
+{{-- @include('components.loader') --}}
+    {{-- id="content-div" --}}
+<div>
     @yield('content')
 </div>
 

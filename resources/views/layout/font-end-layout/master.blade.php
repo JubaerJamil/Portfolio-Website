@@ -69,16 +69,13 @@
   <!-- ======= Hero Section start ======= -->
 
   <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="video-container">
-      <video autoplay muted loop>
-        <source src="../img/hero-bg.mp4" type="video/mp4">
-      </video>
-    </div>
+
     <div class="hero-container" data-aos="fade-in">
-        <p class="">Hello, This is</p>
+        <h3 class="text-white fs-1 text-left fw-bolder">Hello, This Is</h3>
         <h1>Jubaer Jamil</h1>
-        <p>I'm expert in <span class="typed" data-typed-items="PHP, Laravel, MySQL, JavaScript, HTML, CSS, BootStrap"></span></p>
-    </div>
+        <p>I'm Expert In <span class="typed" data-typed-items="PhP, Laravel, JavaScript, MySQL, HTML, CSS, BootStrap"></span></p>
+      </div>
+
   </section>
 
   <!-- ======= Hero Section end ======= -->
@@ -110,7 +107,7 @@
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Vendor JS Files -->
-  <script src="{{ asset('vendor/purecounter/purecounter_vanilla.js') }}"></script>
+  {{-- <script src="{{ asset('vendor/purecounter/purecounter_vanilla.js') }}"></script> --}}
   <script src="{{ asset('vendor/aos/aos.js') }}"></script>
   <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
   <script src="{{ asset('vendor/glightbox/js/glightbox.min.js') }}"></script>
@@ -118,7 +115,7 @@
   <script src="{{ asset('vendor/swiper/swiper-bundle.min.js') }}"></script>
   <script src="{{ asset('vendor/typed.js/typed.umd.js') }}"></script>
   <script src="{{ asset('vendor/waypoints/noframework.waypoints.js') }}"></script>
-  <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script>
+  {{-- <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script> --}}
 
   <!-- Template Main JS File -->
   <script src="{{ asset('js/main.js') }}"></script>
