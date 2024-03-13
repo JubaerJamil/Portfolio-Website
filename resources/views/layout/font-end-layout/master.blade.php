@@ -23,9 +23,22 @@
   <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
   <link href="{{ asset('vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-
   <!-- Template Main CSS File -->
   <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+
+  <!-- jQuert-->
+<script src="{{ asset('js/jquery.min.js') }}"></script>
+  <!-- Axios file -->
+<script src="{{asset('js/axios.min.js')}}"></script>
+<!-- toastify js -->
+<script src="{{asset('js/toastify-js.js')}}"></script>
+<!-- config js -->
+<script src="{{asset('js/config.js')}}"></script>
+
+<!-- toastify css -->
+<link rel="stylesheet" href="{{ asset('css/toastify.min.css') }}">
+<!-- Loader css -->
+<link rel="stylesheet" href="{{ asset('css/progress.css') }}">
 
 </head>
 
@@ -105,6 +118,30 @@
   </footer><!-- End  Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+<!--   Core JS Files for test purpose   -->
+<script src="{{ asset('js/core/popper.min.js') }}" ></script>
+<script src="{{ asset('js/core/bootstrap.min.js') }}" ></script>
+<script src="{{ asset('js/plugins/perfect-scrollbar.min.js') }}" ></script>
+<script src="{{ asset('js/plugins/smooth-scrollbar.min.js') }}" ></script>
+<script src="{{ asset('js/plugins/datatables.js') }}"></script>
+
+<!-- Kanban scripts -->
+<script src="{{ asset('js/plugins/dragula/dragula.min.js') }}"></script>
+<script src="{{ asset('js/plugins/jkanban/jkanban.js') }}"></script>
+
+
+
+
+
+
+
+
+
+
+
+
 
   <!-- Vendor JS Files -->
   {{-- <script src="{{ asset('vendor/purecounter/purecounter_vanilla.js') }}"></script> --}}

@@ -73,13 +73,13 @@
         <div class="collapse" id="ProfileNav" style="">
           <ul class="nav ">
             <li class="nav-item">
-              <a class="nav-link text-white link-primary" href="">
+              <a class="nav-link text-white link-primary" href="{{ url('/user-profile') }}">
                 <span class="sidenav-mini-icon"> MP </span>
                 <span class="sidenav-normal  ms-3  ps-1"> My Profile</span>
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white link-primary" href="/logout">
+              <a class="nav-link text-white link-primary" href="{{ url('/logout') }}">
                 <span class="sidenav-mini-icon"> L </span>
                 <span class="sidenav-normal  ms-3  ps-1"> Logout </span>
               </a>
@@ -106,81 +106,28 @@
 
         {{-- Dashboard Item area start --}}
 <div class="collapse show" id="dashboardsExamples" style="">
-    <div class="collapse show" >
-    <ul class="nav ">
-    <li class="nav-item ">
-      <a class="nav-link text-white link-success" href="">
-        <span class="sidenav-mini-icon"> A </span>
-        <span class="sidenav-normal  ms-2  ps-1">List</span>
-      </a>
-    </li>
-    </ul>
-    </div>
 
     <div class="collapse show" >
-        <ul class="nav">
+        <ul class="nav ">
         <li class="nav-item ">
-          <a class="nav-link text-white link-success " href="">
-            <span class="sidenav-mini-icon"> B </span>
-            <span class="sidenav-normal  ms-2  ps-1"> List </span>
+          <a class="nav-link text-white link-success" href="{{ url('/about-page') }}">
+            <span class="sidenav-mini-icon"> A </span>
+            <span class="sidenav-normal  ms-2  ps-1">About</span>
           </a>
         </li>
         </ul>
-    </div>
+        </div>
+
 
     <div class="collapse show" >
-        <ul class="nav ">
-        <li class="nav-item ">
-          <a class="nav-link text-white link-success " href="">
-            <span class="sidenav-mini-icon"> C </span>
-            <span class="sidenav-normal  ms-2  ps-1">List </span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="collapse show" >
-        <ul class="nav ">
-        <li class="nav-item ">
-          <a class="nav-link text-white link-success" href="">
-            <span class="sidenav-mini-icon"> D </span>
-            <span class="sidenav-normal  ms-2  ps-1"> List </span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="collapse show" >
-        <ul class="nav ">
-        <li class="nav-item ">
-          <a class="nav-link text-white link-success" href="">
-            <span class="sidenav-mini-icon"> E </span>
-            <span class="sidenav-normal  ms-2  ps-1"> List </span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="collapse show" >
-        <ul class="nav ">
-        <li class="nav-item ">
-          <a class="nav-link text-white link-success" href="">
-            <span class="sidenav-mini-icon"> F </span>
-            <span class="sidenav-normal  ms-2  ps-1"> List </span>
-                </a>
-            </li>
-        </ul>
-    </div>
-
-    <div class="collapse show" >
-        <ul class="nav ">
-        <li class="nav-item ">
-          <a class="nav-link text-white link-success" href="">
-            <span class="sidenav-mini-icon"> G </span>
-            <span class="sidenav-normal  ms-2  ps-1"> List</span>
-                </a>
-            </li>
-        </ul>
+    <ul class="nav ">
+    <li class="nav-item ">
+      <a class="nav-link text-white link-success" href="{{ url('/service-page') }}">
+        <span class="sidenav-mini-icon"> B </span>
+        <span class="sidenav-normal  ms-2  ps-1">Services</span>
+      </a>
+    </li>
+    </ul>
     </div>
 
 </div>

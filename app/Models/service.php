@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class service extends Model
+class Service extends Model
 {
-    protected $fillable = ['main_content', 'title_content', 'content_details', 'user_id'];
+    protected $fillable = ['service_title', 'service_details', 'user_id'];
 }

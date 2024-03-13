@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\User;
-use App\Helper\JWTToken;
 use App\Mail\OTPMail;
+use App\Helper\JWTToken;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
 
 class UserController extends Controller
@@ -31,6 +33,11 @@ class UserController extends Controller
         return view('pages.back-end-page.auth.reset-password-page');
     }
 
+    function UserProfilePage(Request $request){
+        return view('pages.back-end-page.profile.profile-page');
+    }
+
+
 
 
 
@@ -53,7 +60,7 @@ class UserController extends Controller
                 'email'=> $request->input('email'),
                 'password'=> $request->input('password'),    // when need hash password use this line    'password'=> bcrypt($request->input('password')),
                 'phone'=> $request->input('phone'),
-                'img_url'=>$img_url,
+                'img_url'=>$img_url
             ]);
 
             return response()->json([
@@ -73,10 +80,10 @@ class UserController extends Controller
     function userlogin (Request $request){
         $count = User::where('email', '=', $request->input('email'))
             ->where('password', '=', $request->input('password'))
-            ->count();
+            ->select('id')->first();
 
-            if($count === 1){
-                $token = JWTToken::createtoken($request->input('email'));
+            if($count !==null){
+                $token = JWTToken::createtoken($request->input('email'),$count->id);
                 return response()->json([
                     'status' => 'success',
                     'message' => 'Login successful',
@@ -160,7 +167,139 @@ class UserController extends Controller
         return redirect('/login')->cookie('token', '', -1);
     }
 
+    function userprofile(Request $request){
+        try{
+            $email = $request->header('email');
+            $user = User::where('email', '=', $email)->first();
+            return response()->json([
+            'status' => "success",
+            'message' => "Request Successfull",
+            "data" => $user
+            ],200);
+        }
+        catch(Exception $e){
+            return response()->Json([
+            'status' => "Unsuccess",
+            'message' => "Request Field"
+            ]);
+        }
+    }
 
+    // function userupdate(Request $request){
+    //     try {
+    //         $email = $request->header('email');
 
+    //     if ($request->hasFile('img_url')){
+
+    //         // new file upload
+    //         $img = $request->file('img_url');
+    //         $time = time();
+    //         $original_name = $img->getClientOriginalName();
+    //         $img_name = "{$time}-{$original_name}";
+    //         $img_url = "uploads/{$img_name}";
+
+    //         // moved image
+    //         $img->move(public_path('uploads'), $img_url);
+
+    //         //old file delete
+    //         $filepath = $request->input('file_path');
+    //         File::delete($filepath);
+
+    //         //update info
+
+    //         return User::where('email', '=', $email)->update([
+    //             'first_name'=> $request->input('first_name'),
+    //             'last_name'=> $request->input('last_name'),
+    //             'password'=> $request->input('password'),
+    //             'phone'=> $request->input('phone'),
+    //             'img_url'=>$img_url
+    //         ]);
+    //     }
+    //     else{
+    //         return User::where('email', '=', $email)->update([
+    //             'first_name'=> $request->input('first_name'),
+    //             'last_name'=> $request->input('last_name'),
+    //             'password'=> $request->input('password'),
+    //             'phone'=> $request->input('phone')
+    //         ]);
+    //     }
+    //     }
+    //     catch(Exception $e){
+    //         return response()->json([
+    //             'Status' => "success",
+    //             'Message' => "Request Successfull",
+    //             ],400);
+    //         // return $e->getMessage();
+    //     }
+
+    // }
+
+    function userupdate(Request $request){
+        try {
+            $email = $request->header('email');
+
+            if ($request->hasFile('img_url')){
+
+                // new file upload
+                $img = $request->file('img_url');
+                $time = time();
+                $original_name = $img->getClientOriginalName();
+                $img_name = "{$time}-{$original_name}";
+                $img_url = "uploads/{$img_name}";
+
+                // moved image
+                $img->move(public_path('uploads'), $img_url);
+
+                //old file delete
+                $filepath = $request->input('file_path');
+                if ($filepath && File::exists($filepath)) {
+                    File::delete($filepath);
+                } else {
+                    // Log error if file doesn't exist
+                    Log::error("File does not exist at path: $filepath");
+                }
+
+                //update info
+                $updateData = [
+                    'first_name'=> $request->input('first_name'),
+                    'last_name'=> $request->input('last_name'),
+                    'password'=> $request->input('password'),
+                    'phone'=> $request->input('phone'),
+                    'img_url'=>$img_url
+                ];
+
+            } else {
+                $updateData = [
+                    'first_name'=> $request->input('first_name'),
+                    'last_name'=> $request->input('last_name'),
+                    'password'=> $request->input('password'),
+                    'phone'=> $request->input('phone')
+                ];
+            }
+
+            // Perform the update
+            $updated = User::where('email', '=', $email)->update($updateData);
+
+            if ($updated) {
+                return response()->json([
+                    'status' => "success",
+                    'message' => "Request Successfully",
+                ], 200);
+            } else {
+                return response()->json([
+                    'status' => "error",
+                    'message' => "Failed to update user",
+                ], 400);
+            }
+
+        } catch(Exception $e) {
+            // Log the exception
+            // Log::error("Exception occurred: " . $e->getMessage());
+            return response()->json([
+                'status' => "error",
+                'message' => "An error occurred while processing the request",
+            ], 500);
+        }
+    }
 
 }

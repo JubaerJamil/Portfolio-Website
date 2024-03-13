@@ -9,4 +9,6 @@ class DashboardController extends Controller
     function dashboardpage(Request $request){
         return view('layout.back-end-layout.app');
     }
+
+    
 }

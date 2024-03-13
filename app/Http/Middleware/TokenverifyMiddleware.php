@@ -28,8 +28,8 @@ class TokenverifyMiddleware
             // ],401);
         }else {
 
-            $request->headers->set('email', $result);
-            // $request->headers->set('id', $result);
+            $request->headers->set('email', $result->userEmail);
+            $request->headers->set('id', $result->userId);
             return $next($request);
         }
 
