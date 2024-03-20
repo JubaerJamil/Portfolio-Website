@@ -78,8 +78,8 @@
                 let res = await axios.get('/about_list');
         hideLoader();
 
-        if(res.status === 200 && res.data['status'] === 'success'){
-            let data = res.data['data'];
+        if(res.status === 200){
+            let data = res.data;
             document.getElementById('about_info').value=data['about_info'];
             document.getElementById('about_title').value=data['about_title'];
             document.getElementById('about_details').value=data['about_details'];

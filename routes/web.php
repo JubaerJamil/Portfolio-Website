@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AboutController;
+use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -59,14 +61,16 @@ Route::post('/service-update', [ServiceController::class, 'serviceUpdate'])->mid
 Route::post('/service-delete', [ServiceController::class, 'serviceDelete'])->middleware([TokenverifyMiddleware::class]);
 Route::get('/service-update-by-id', [ServiceController::class, 'serviceUpdateById'])->middleware([TokenverifyMiddleware::class]);
 
-// service data table page
+// service data table page for Back
+Route::get('/service-page', [ServiceController::class, 'serviceTable'])->middleware([TokenverifyMiddleware::class]);
 
-Route::get('/service-page', [ServiceController::class, 'servicetable'])->middleware([TokenverifyMiddleware::class]);
+// service data table page for Font
+Route::get('/', [ServiceController::class, 'serviceTableFont']);
 
 
 // About section API
 
-// Route::post('/create_about', [AboutController::class, 'createabout'])->middleware([TokenverifyMiddleware::class]);
+Route::post('/create_about', [AboutController::class, 'createabout'])->middleware([TokenverifyMiddleware::class]);
 Route::post('/update_about', [AboutController::class, 'updateabout'])->middleware([TokenverifyMiddleware::class]);
 // Route::post('/delete_about', [AboutController::class, 'deleteabout'])->middleware([TokenverifyMiddleware::class]);
 Route::get('/about_list', [AboutController::class, 'aboutlist'])->middleware([TokenverifyMiddleware::class]);
@@ -75,4 +79,31 @@ Route::get('/about_list', [AboutController::class, 'aboutlist'])->middleware([To
 // About page
 
 Route::get('/about-page', [AboutController::class, 'aboutItemList'])->middleware([TokenverifyMiddleware::class]);
+
+// certificate API
+
+Route::post('/certificate-upload', [CertificateController::class, 'createCertificate'])->middleware([TokenverifyMiddleware::class]);
+Route::post('/certificate-delete', [CertificateController::class, 'certificateDelete'])->middleware([TokenverifyMiddleware::class]);
+Route::get('/certificate-list', [CertificateController::class, 'certificateList'])->middleware([TokenverifyMiddleware::class]);
+
+// certificate page for Back
+Route::get('/certificate-page', [CertificateController::class, 'certificatePage'])->middleware([TokenverifyMiddleware::class]);
+// certificate page for font
+Route::get('/', [CertificateController::class, 'certificatePageFont']);
+
+
+// Contact API
+Route::post('/contact-message', [ContactController::class, 'receiveMessage'])->middleware([TokenverifyMiddleware::class]);
+Route::get('/contact-list', [ContactController::class, 'messageList'])->middleware([TokenverifyMiddleware::class]);
+Route::post('/message-delete', [ContactController::class, 'messageDelete'])->middleware([TokenverifyMiddleware::class]);
+
+// contact page for admin
+
+Route::get('/message-list', [ContactController::class, 'messageListPage'])->middleware([TokenverifyMiddleware::class]);
+
+// contact page for font
+// Route::post('/', [ContactController::class, 'homePageForMessage']);
+
+
+
 

@@ -4,7 +4,9 @@
 
       <div class="section-title">
         <h2>Contact</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <p>If you have any questions, feedback, or inquiries, don't hesitate to reach out to us. We're here to assist you in any way we can.
+            Whether you have a query about our services, want to collaborate with us, or just want to drop us a line,
+            we'd love to hear from you.</p>
       </div>
 
       <div class="row" data-aos="fade-in">
@@ -38,35 +40,88 @@
         </div>
 
         <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-          <form action="{{ asset('forms/contact.php') }}" method="post" role="form" class="php-email-form">
+          <form id="contactForm" role="form" class="php-email-form">
             <div class="row">
               <div class="form-group col-md-6">
                 <label for="name">Your Name</label>
-                <input type="text" name="name" class="form-control" id="name" required>
+                <input type="text" name="name" class="form-control" id="name">
               </div>
               <div class="form-group col-md-6">
-                <label for="name">Your Email</label>
-                <input type="email" class="form-control" name="email" id="email" required>
+                <label for="name">Phone Number</label>
+                <input type="text" class="form-control" name="phone" id="phone">
               </div>
             </div>
             <div class="form-group">
-              <label for="name">Subject</label>
-              <input type="text" class="form-control" name="subject" id="subject" required>
+              <label for="name">Your Email</label>
+              <input type="email" class="form-control" name="email" id="email">
             </div>
             <div class="form-group">
               <label for="name">Message</label>
-              <textarea class="form-control" name="message" rows="10" required></textarea>
+              <textarea class="form-control" name="message" rows="10" id="message"></textarea>
             </div>
             <div class="my-3">
               <div class="loading">Loading</div>
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
-            <div class="text-center"><button type="submit">Send Message</button></div>
+            <div class=""><button type="submit">Submit</button></div>
           </form>
+
         </div>
 
       </div>
 
     </div>
   </section><!-- End Contact Section -->
+
+
+<script>
+    let contactForm = document.getElementById('contactForm');
+    contactForm.addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        let name = document.getElementById('name').value;
+        let phone = document.getElementById('phone').value;
+        let email = document.getElementById('email').value;
+        let message = document.getElementById('message').value;
+
+        if (name.length === 0) {
+            alert('Please enter a name');
+        } else if (phone.length === 0) {
+            alert('Please enter a phone number');
+        } else if (email.length === 0) {
+            alert('Please enter an email');
+        } else {
+            try {
+                // showLoader();
+                let response = await fetch('/contact-message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        full_name: name,
+                        phone_number: phone,
+                        email: email,
+                        message: message
+                    })
+                });
+
+                let responseData = await response.json();
+
+                // hideLoader();
+
+                if (response.ok && responseData.status === 'success') {
+                    alert('Thanks for your message. We will contact you very soon!');
+                    contactForm.reset();
+                } else {
+                    alert('Something went wrong');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Something went wrong');
+            }
+        }
+    });
+
+</script>

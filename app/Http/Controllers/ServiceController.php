@@ -8,13 +8,17 @@ use Illuminate\Http\Request;
 class ServiceController extends Controller
 {
 
-    function servicetable(Request $request){
+    function serviceTable(Request $request){
         return view('pages.back-end-page.service.service-page');
     }
 
+    function serviceTableFont(Request $request){
+        return view('pages.font-end-page.home-pag');
+    }
+
     function serviceList(Request $request){
-        $user_id = $request->header('id');
-        return Service::where('user_id',$user_id)->get();
+        // $user_id = $request->header('id');
+        return Service::all();
     }
 
     function createService(Request $request){

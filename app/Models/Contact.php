@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Service extends Model
+class Contact extends Model
 {
-    protected $fillable = ['service_summary', 'service_title', 'service_details', 'user_id'];
+    protected $fillable = ['full_name', 'phone_number', 'email', 'message'];
 }

@@ -1987,9 +1987,9 @@
           }
         }
 
-        if (url.indexOf('goajax=true') > -1) {
-          return 'ajax';
-        }
+        // if (url.indexOf('goajax=true') > -1) {
+        //   return 'ajax';
+        // }
 
         return 'external';
       }

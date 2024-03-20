@@ -103,21 +103,11 @@ class AboutController extends Controller
     }
 
     function aboutlist(Request $request){
-        try{
+
             $user_id = $request->header('id');
-            $user = About::where('user_id', $user_id)->first();
-            return response()->json([
-                'status' => "success",
-                'message' => "Request Successfull",
-                "data" => $user
-                ],200);
-        }
-        catch(Exception $e){
-            return response()->Json([
-                'status' => "Unsuccess",
-                'message' => "Request Field"
-                ],400);
-        }
+            return About::where('user_id', $user_id)->first();
+
+
     }
 
 }

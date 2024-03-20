@@ -1,26 +1,16 @@
 <!-- ======= Services Section ======= -->
 <section id="services" class="services">
     <div class="container">
-        <div id="serviceItem">
-
+        <div id="">
             <div class="section-title">
                 <h2>Services</h2>
-                <p id="summary">summary</p>
+                <p id="summary">Welcome to My website, where I'm committed to delivering exceptional solutions meticulously
+                    crafted to cater to your unique needs. My extensive range of services guarantees that we can fulfill all your
+                     requirements, regardless of the scale or complexity of your project.</p>
               </div>
-
-              <div class="row">
-                <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-                  <div class="icon"><i class='bx bx-code-curly' ></i></div>
-                  <h4 class="title"><a href="" id="title">web development</a></h4>
-                  <p class="description" id="details">web development details</p>
-                </div>
+              <div id="serviceItem" class="row">
 
               </div>
-
-
-
-
-
         </div>
 
     </div>
@@ -29,49 +19,25 @@
   <script>
             getServiceItem();
     async function getServiceItem(){
-        showLoader();
-                let res = await axios.get('/service-list');
-        hideLoader();
 
-        if (res.status===200){
-            let data = res.data['data'];
-            document.getElementById('summary').value = data['service_summary'];
-            document.getElementById('title').value = data['service_title'];
-            document.getElementById('details').value = data['service_details'];
-        }
-        else {
-                alert('something went wrong');
-               // return console.log(res);
-        }
+                let res = await axios.get('/service-list');
+
+
+        res.data.forEach(function(item){
+
+            document.getElementById('serviceItem').innerHTML += (
+                    `
+                    <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
+                    <div class="icon"><i class='bi bi-calendar4-week' ></i></div>
+                    <h4 class="title"><a href="" id="title">${item['service_title']}</a></h4>
+                    <p class="description" id="details">${item['service_details']}</p>
+                    </div>
+                    `
+            )
+
+        });
 
     }
 
-
-
-
-
-
-
-
-    //     res.data.forEach(function(item){
-
-    //     let services = `<div class="section-title">
-    //     <h2>Services</h2>
-    //     <p></p>
-    //   </div>
-
-    //   <div class="row">
-    //     <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-    //       <div class="icon"><i class='bx bx-code-curly' ></i></div>
-    //       <h4 class="title"><a href=""></a></h4>
-    //       <p class="description"></p>
-    //     </div>
-
-    //   </div>`
-    //   serviceItem.append(services)
-    // });
-
-
-    // }
 
   </script>
