@@ -118,12 +118,23 @@
         </ul>
         </div>
 
+    <div class="collapse show" >
+        <ul class="nav ">
+        <li class="nav-item ">
+          <a class="nav-link text-white link-success" href="{{ url('/skill-page') }}">
+            <span class="sidenav-mini-icon"> B </span>
+            <span class="sidenav-normal  ms-2  ps-1">Skill</span>
+          </a>
+        </li>
+        </ul>
+        </div>
+
 
     <div class="collapse show" >
     <ul class="nav ">
     <li class="nav-item ">
       <a class="nav-link text-white link-success" href="{{ url('/service-page') }}">
-        <span class="sidenav-mini-icon"> B </span>
+        <span class="sidenav-mini-icon"> C </span>
         <span class="sidenav-normal  ms-2  ps-1">Services</span>
       </a>
     </li>
@@ -135,7 +146,7 @@
         <ul class="nav ">
         <li class="nav-item ">
           <a class="nav-link text-white link-success" href="{{ url('/certificate-page') }}">
-            <span class="sidenav-mini-icon"> C </span>
+            <span class="sidenav-mini-icon"> D </span>
             <span class="sidenav-normal  ms-2  ps-1">Certification</span>
           </a>
         </li>
@@ -147,7 +158,7 @@
             <ul class="nav ">
             <li class="nav-item ">
               <a class="nav-link text-white link-success" href="{{ url('/message-list') }}">
-                <span class="sidenav-mini-icon"> D </span>
+                <span class="sidenav-mini-icon"> E </span>
                 <span class="sidenav-normal  ms-2  ps-1">Cantact's Message</span>
               </a>
             </li>

@@ -8,6 +8,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\SkillController;
 use App\Http\Middleware\TokenverifyMiddleware;
 
 /*
@@ -101,8 +102,16 @@ Route::post('/message-delete', [ContactController::class, 'messageDelete'])->mid
 
 Route::get('/message-list', [ContactController::class, 'messageListPage'])->middleware([TokenverifyMiddleware::class]);
 
-// contact page for font
-// Route::post('/', [ContactController::class, 'homePageForMessage']);
+// skill page API
+
+Route::post('/skill-input', [SkillController::class, 'skillInput'])->middleware([TokenverifyMiddleware::class]);
+Route::post('/skill-update', [SkillController::class, 'skillUpdate'])->middleware([TokenverifyMiddleware::class]);
+Route::post('/skill-delete', [SkillController::class, 'skillDelete'])->middleware([TokenverifyMiddleware::class]);
+Route::get('/skill-list', [SkillController::class, 'skillList'])->middleware([TokenverifyMiddleware::class]);
+Route::get('/skill-update-by-id', [SkillController::class, 'skillUpdateById'])->middleware([TokenverifyMiddleware::class]);
+
+// skill page for admin
+Route::get('/skill-page', [SkillController::class, 'skillListPage'])->middleware([TokenverifyMiddleware::class]);
 
 
 

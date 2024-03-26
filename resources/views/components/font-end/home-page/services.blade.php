@@ -19,9 +19,9 @@
   <script>
             getServiceItem();
     async function getServiceItem(){
-
+        showLoader();
                 let res = await axios.get('/service-list');
-
+        hideLoader();
 
         res.data.forEach(function(item){
 
@@ -38,6 +38,4 @@
         });
 
     }
-
-
   </script>

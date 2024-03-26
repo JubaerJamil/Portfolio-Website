@@ -30,8 +30,13 @@
 <!-- Loader css -->
 <link rel="stylesheet" href="{{ asset('css/progress.css') }}">
 
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css"/>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
+
+
+
   <!-- jQuert-->
-{{-- <script src="{{ asset('js/jquery.min.js') }}"></script> --}}
+<script src="{{ asset('js/jquery.min.js') }}"></script>
   <!-- Axios file -->
 <script src="{{asset('js/axios.min.js')}}"></script>
 <!-- toastify js -->
@@ -70,6 +75,7 @@
         <ul>
           <li><a href="#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
           <li><a href="#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
+          <li><a href="#skills" class="nav-link scrollto"><i class='bx bx-brightness'></i> <span>Skills</span></a></li>
           <li><a href="#resume" class="nav-link scrollto"><i class='bx bx-book-open'></i> <span>Resume</span></a></li>
           <li><a href="#portfolio" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Portfolio</span></a></li>
           <li><a href="#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
@@ -96,12 +102,18 @@
 
   <main id="main">
 
-@include('components.loader')
-<div id="content-div">
+{{-- @include('components.loader') --}}
+{{-- <div id="content-div"> --}}
+
+    <div id="loader" class="LoadingOverlay d-none">
+        <div class="Line-Progress">
+            <div class="indeterminate"></div>
+        </div>
+    </div>
 
     @yield('content')
 
-</div>
+{{-- </div> --}}
 
   </main>
     <!-- End #main -->
@@ -131,6 +143,10 @@
   <script src="{{ asset('vendor/typed.js/typed.umd.js') }}"></script>
   <script src="{{ asset('vendor/waypoints/noframework.waypoints.js') }}"></script>
   {{-- <script src="{{ asset('vendor/php-email-form/validate.js') }}"></script> --}}
+
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-1.11.0.min.js"></script> --}}
+{{-- <script type="text/javascript" src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> --}}
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="{{ asset('js/main.js') }}"></script>

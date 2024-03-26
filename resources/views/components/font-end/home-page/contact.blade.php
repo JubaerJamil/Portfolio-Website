@@ -93,7 +93,8 @@
             alert('Please enter an email');
         } else {
             try {
-                // showLoader();
+                showLoader();
+
                 let response = await fetch('/contact-message', {
                     method: 'POST',
                     headers: {
@@ -109,17 +110,20 @@
 
                 let responseData = await response.json();
 
-                // hideLoader();
+                hideLoader();
 
                 if (response.ok && responseData.status === 'success') {
-                    alert('Thanks for your message. We will contact you very soon!');
+                    successToast('Thanks for your message. We will contact you very soon!');
+                    // alert('Thanks for your message. We will contact you very soon!');
                     contactForm.reset();
                 } else {
-                    alert('Something went wrong');
+                    errorToast('Something went wrong');
+                    // alert('Something went wrong');
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Something went wrong');
+                errorToast('Something went wrong');
+                // alert('Something went wrong');
             }
         }
     });
