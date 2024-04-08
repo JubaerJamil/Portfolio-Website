@@ -145,8 +145,20 @@
     <div class="collapse show" >
         <ul class="nav ">
         <li class="nav-item ">
-          <a class="nav-link text-white link-success" href="{{ url('/certificate-page') }}">
+          <a class="nav-link text-white link-success" href="{{ url('/project-page') }}">
             <span class="sidenav-mini-icon"> D </span>
+            <span class="sidenav-normal  ms-2  ps-1">Project List</span>
+          </a>
+        </li>
+        </ul>
+        </div>
+
+
+    <div class="collapse show" >
+        <ul class="nav ">
+        <li class="nav-item ">
+          <a class="nav-link text-white link-success" href="{{ url('/certificate-page') }}">
+            <span class="sidenav-mini-icon"> E </span>
             <span class="sidenav-normal  ms-2  ps-1">Certification</span>
           </a>
         </li>

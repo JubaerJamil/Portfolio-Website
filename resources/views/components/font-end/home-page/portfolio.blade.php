@@ -1,59 +1,41 @@
-<!-- ======= Portfolio Section ======= -->
-<section id="portfolio" class="portfolio section-bg">
+<section id="portfolio" class="portfolio section-bg py-5">
     <div class="container">
-
-      <div class="section-title">
-        <h2>Portfolio</h2>
-        {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem.
-            Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-             Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
-      </div>
-
-      <div class="row" data-aos="fade-up">
-        <div class="col-lg-12 d-flex justify-content-center">
-          <ul id="portfolio-flters">
-            <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-app">App</li>
-            <li data-filter=".filter-card">Card</li>
-            <li data-filter=".filter-web">Web</li>
-          </ul>
+        <div class="section-title">
+            <h2>Project</h2>
+            <p>Discover some of the remarkable projects we've undertaken below. At our core, we're dedicated to delivering outstanding
+                results that exceed our clients' expectations. With each project, we aim to showcase our creativity,
+                expertise, and unwavering commitment to excellence.</p>
         </div>
-      </div>
+        <div id="showProjectItem" class="row">
 
-      <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-          <div class="portfolio-wrap">
-            <img src="{{ asset('img/portfolio/portfolio-10.jpg') }}" class="img-fluid" alt="">
-            <div class="portfolio-links">
-              <a href="{{ asset('img/portfolio/portfolio-10.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="/portfolio-details-1" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
         </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-          <div class="portfolio-wrap">
-            <img src="{{ asset('img/portfolio/portfolio-11.jpg') }}" class="img-fluid" alt="">
-            <div class="portfolio-links">
-              <a href="{{ asset('img/portfolio/portfolio-11.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="/portfolio-details-2" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-          <div class="portfolio-wrap">
-            <img src="{{ asset('img/portfolio/portfolio-12.jpg') }}" class="img-fluid" alt="">
-            <div class="portfolio-links">
-              <a href="{{ asset('img/portfolio/portfolio-12.jpg') }}" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="/portfolio-details-3" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div>
-        </div>
-
-
     </div>
+</section>
 
-    </div>
-  </section><!-- End Portfolio Section -->
+<script>
+    showAllProjectItem();
+    async function showAllProjectItem() {
+        showLoader();
+        let res = await axios.get('/project-list');
+        hideLoader();
+
+        res.data.forEach(function(item) {
+            document.getElementById('showProjectItem').innerHTML += (
+                `
+                <div  class="col-lg-6">
+                    <div  class="card">
+                        <img src="${item['img_url']}" class="card-img-top" alt="Project 1">
+                        <div class="card-body">
+                            <h5 class="card-title">${item['project_title']}</h5>
+                            <p class="card-text">Client Name: <span>${item['client_name']}</span></p>
+                            <p class="card-text-2">Client From: <span>${item['client_from']}</span></p>
+                            <a target="target_blang" href="${item['preview_link']}" class="btn btn-primary">Visit Project</a>
+                        </div>
+                    </div>
+                </div>
+                `
+            )
+        });
+    }
+</script>

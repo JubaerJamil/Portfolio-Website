@@ -48,7 +48,7 @@ class AboutController extends Controller
         }
         catch(Exception $e){
             return response()->json([
-                "status" => "Faild",
+                "status" => "Failed",
                 "message" => "Request Failed"
             ],400);
                 // return $e->getMessage();

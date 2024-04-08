@@ -1109,3 +1109,48 @@ section {
     padding-right: 20px 15px;
   }
 }
+
+/* project section css */
+
+.card {
+    margin: 20px;
+    transition: box-shadow 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+.card img {
+    transition: transform 0.3s;
+    height: 300px;
+    object-fit: cover;
+    padding: 4px;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card .card-body {
+    background: rgba(0,0,0,0.5);
+    color: white;
+    transition: opacity 0.3s;
+    opacity: 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.card:hover .card-body {
+    opacity: 1;
+}
+
+.card-title {
+    margin-bottom: 3;
+}
+
+.card-text-2{
+    margin-top: -15px;
+}

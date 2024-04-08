@@ -1,15 +1,18 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\CertificateController;
-use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\AboutController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProjectController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Middleware\TokenverifyMiddleware;
+use App\Http\Controllers\CertificateController;
+use App\Http\Controllers\ResumeEduController;
+use App\Http\Controllers\ResumeProEduController;
 
 /*
 |--------------------------------------------------------------------------
@@ -102,7 +105,7 @@ Route::post('/message-delete', [ContactController::class, 'messageDelete'])->mid
 
 Route::get('/message-list', [ContactController::class, 'messageListPage'])->middleware([TokenverifyMiddleware::class]);
 
-// skill page API
+// skill API
 
 Route::post('/skill-input', [SkillController::class, 'skillInput'])->middleware([TokenverifyMiddleware::class]);
 Route::post('/skill-update', [SkillController::class, 'skillUpdate'])->middleware([TokenverifyMiddleware::class]);
@@ -114,5 +117,27 @@ Route::get('/skill-update-by-id', [SkillController::class, 'skillUpdateById'])->
 Route::get('/skill-page', [SkillController::class, 'skillListPage'])->middleware([TokenverifyMiddleware::class]);
 
 
+// project API
+
+Route::post('create-project', [ProjectController::class, 'projectCreate'])->middleware([TokenverifyMiddleware::class]);
+Route::post('update-project', [ProjectController::class, 'projectUpdate'])->middleware([TokenverifyMiddleware::class]);
+Route::post('delete-project', [ProjectController::class, 'projectDelete'])->middleware([TokenverifyMiddleware::class]);
+Route::get('project-list', [ProjectController::class, 'projectList'])->middleware([TokenverifyMiddleware::class]);
+Route::get('project-update-by-id', [ProjectController::class, 'project_Update_By_Id'])->middleware([TokenverifyMiddleware::class]);
+
+// project page for admin
+
+Route::get('/project-page', [ProjectController::class, 'projectPage'])->middleware([TokenverifyMiddleware::class]);
 
 
+// Resume Education API
+
+Route::post('/input-education', [ResumeEduController::class, 'createResumeEdu'])->middleware([TokenverifyMiddleware::class]);
+Route::get('/resume-education-list', [ResumeEduController::class, 'resumeEduList'])->middleware([TokenverifyMiddleware::class]);
+
+
+
+// Resume Pro Education API
+
+Route::post('/input-pro-education', [ResumeProEduController::class, 'createResumeProEdu'])->middleware([TokenverifyMiddleware::class]);
+Route::get('/resume-pro-education-list', [ResumeProEduController::class, 'createResumeProEduList'])->middleware([TokenverifyMiddleware::class]);
