@@ -7,11 +7,11 @@
 
 
     </div>
-  </section><!-- End About Section -->
+</section><!-- End About Section -->
 
 <script>
-            getAbout();
-    async function getAbout(){
+    getAbout();
+    async function getAbout() {
 
         let res = await axios.get('/about_list');
 
@@ -52,5 +52,4 @@
             `
         )
     }
-
 </script>

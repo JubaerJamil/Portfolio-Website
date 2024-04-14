@@ -2,7 +2,8 @@
     <div class="container">
         <div class="section-title">
             <h2>Project</h2>
-            <p>Discover some of the remarkable projects we've undertaken below. At our core, we're dedicated to delivering outstanding
+            <p>Discover some of the remarkable projects we've undertaken below. At our core, we're dedicated to
+                delivering outstanding
                 results that exceed our clients' expectations. With each project, we aim to showcase our creativity,
                 expertise, and unwavering commitment to excellence.</p>
         </div>

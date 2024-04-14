@@ -2,31 +2,32 @@
 <section id="skills" class="skills section-bg">
     <div class="container">
 
-      <div class="section-title">
-        <h2>Skills</h2>
-        {{-- <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit.
-            Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea.
-             Quia fugiat sit in iste officiis commodi quidem hic quas.</p> --}}
-      </div>
+        <div class="section-title">
+            <h2>Skills</h2>
+            <p>Explore a spectrum of skills tailored for your project needs. With expertise ranging from technical
+                coding to creative design,
+                my portfolio offers a diverse toolkit. Let's shape your vision together, leveraging my skills to bring
+                your projects to life.</p>
+        </div>
 
-      <div id="skillList" class="row skills-content">
+        <div id="skillList" class="row skills-content">
 
-      </div>
+        </div>
 
     </div>
-  </section><!-- End Skills Section -->
+</section><!-- End Skills Section -->
 
 <script>
     getSkillItem();
-async function getSkillItem(){
-showLoader();
+    async function getSkillItem() {
+        showLoader();
         let res = await axios.get('/skill-list');
-hideLoader();
+        hideLoader();
 
-res.data.forEach(function(item){
+        res.data.forEach(function(item) {
 
-    document.getElementById('skillList').innerHTML += (
-            `
+            document.getElementById('skillList').innerHTML += (
+                `
                 <div class="progress">
                     <div class="col-lg-12" data-aos="fade-up">
             <span class="skill">${item['skill_name']}<i class="val">${item['show_percentage']}</i></span>
@@ -36,9 +37,9 @@ res.data.forEach(function(item){
           </div>
         </div>
             `
-    )
+            )
 
-});
+        });
 
-}
+    }
 </script>

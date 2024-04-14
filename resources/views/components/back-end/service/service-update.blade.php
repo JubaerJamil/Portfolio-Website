@@ -52,7 +52,6 @@
             document.getElementById('updateServiceDetails').value = res.data['service_details'];
         } catch (error) {
             console.error("Error fetching service details:", error);
-            // Handle error (show message, log, etc.)
         } finally {
             hideLoader();
         }
